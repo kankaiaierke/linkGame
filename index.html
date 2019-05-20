@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">     
+<meta charset="utf-8">             
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">     
+<meta content="yes" name="apple-mobile-web-app-capable">     
+<meta content="black" name="apple-mobile-web-app-status-bar-style">     
+<meta content="telephone=no" name="format-detection">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>连连看</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<style>
+		</style>
+	</head>
+	<body>
+		<div class="mainBoard" id="main" :style="{'width':length*60+'px'}" v-cloak>
+			<ul v-for="(ul,i) in boardArr">
+				<li v-for="(li,j) in ul" @click="doTouch(i,j)" @mouseover="doHover(i,j)" @mouseout="doBlur">
+					<img v-if="li.name != 0" :src="'image/'+li.name+'.jpg'"/>
+					<span v-if="i === objIJ[0] && j === objIJ[1]" class="onSelect"></span>
+					<span v-if="i === hoverIJ[0] && j === hoverIJ[1]" class="onHover"></span>
+					<span v-if="li.bg != ''" :class="['route',li.bg]"></span>
+				</li>
+			</ul>
+		</div>
+	</body>
+<script type="text/javascript" src="js/fastclick.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</html>
